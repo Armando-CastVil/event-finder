@@ -5,6 +5,9 @@ import axios from 'axios'
 import ReactDOM from 'react-dom'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import timeConverter from './Modules/timeConverter';
+import Radius from './Components/Radius';
+import Location from './Components/Location';
 
 
 
@@ -23,104 +26,6 @@ export default function Home( ) {
     })
   }
   
-
-  //This functions converts unix timestamps to day/month/year format
-  function timeConverter(UNIX_timestamp: number){
-    var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + year   ;
-    return time;
-  }
-
-  class Radius extends React.Component <{}, { value: string }>
-  {
-    handleFormSubmit:any=(event:any) =>{
-      alert('radius was submitted: ' + this.state.value);
-      console.log(radius)
-      console.log("coords ="+coordinates)
-      event.preventDefault();
-      radius=this.state.value;
-      console.log(radius)
-      
-    }
-    handleChange:any=(event:any) =>
-    {
-      this.setState({value: event.target.value});
-    }
-    constructor(props:any)
-    {
-      super(props);
-      
-      this.state = {
-        value:""
-        
-      };
-
-      
-
-     
-
-      this.handleChange = this.handleChange.bind(this);
-      this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    }
-
-    render() {
-      return (
-        <div id="radiusForm">
-        <form onSubmit={this.handleFormSubmit}>
-          <label>
-            Radius:
-            <textarea placeholder="Enter Radius" value={this.state.value} onChange={this.handleChange} />
-            
-          </label>
-          
-          <input type="submit" value="Submit" />
-        </form>
-        
-        </div>
-      );
-    }
-  }
-  
-  class Location extends React.Component <{}, { value: string }>
-  {
-   
-    constructor(props:any) {
-      
-      super(props);
-      this.state = 
-      {
-        value:""
-      };
-    }
-
-    
-  
-    componentDidMount() {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.setState({value: position.coords.latitude.toString()+","+position.coords.longitude.toString()});
-        coordinates=position.coords.latitude.toString()+","+position.coords.longitude.toString();
-        
-      });
-    }
-  
-    render() {
-      
-      return (
-        <React.Fragment>
-          {this.state.value}
-          
-        </React.Fragment>
-          
-      );
-    }
-  }
   
   
   
