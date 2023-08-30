@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import React, { useState } from "react";
 import styles from '../styles/Home.module.css';
-import Radius from '../Components/Radius';
-import timeConverter from '../modules/timeConverter';
-import Location from '../Components/Location';
-import getEvents from '../modules/getEvents';
+import Radius from './Components/Radius';
+import timeConverter from './modules/timeConverter';
+import Location from './Components/Location';
+import getEvents from './modules/getEvents';
 
 export default function Home() {
   const [coordinates, setCoordinates] = useState<string>("");
@@ -15,7 +15,7 @@ export default function Home() {
     if (coordinates && radius) {
      getEvents(coordinates,radius).then((tourneys)=>
      {
-      setTournaments(tourneys.tournaments.nodes)
+      setTournaments(tourneys.tournaments.nodes);
      })
      
     }
