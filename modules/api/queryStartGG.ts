@@ -2,7 +2,7 @@
 
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import {SMASHGG_API_URL} from "../../utility/config"
-import ErrorCode from "../../modules/enum"
+import ErrorCode from "../enum"
 function sleep(milliseconds: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
