@@ -1,4 +1,4 @@
-import startGGQueryer from "../pages/api/queryStartGG";
+import startGGQueryer from "./api/queryStartGG";
 import { SMASHGG_API_KEY } from "../utility/config";
 
 //function for api call
