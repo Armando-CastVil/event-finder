@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styles from '../styles/Home.module.css'
-import timeConverter from "../Modules/timeConverter"
+import timeConverter from "../modules/timeConverter"
 import axios from "axios"
 export default function DisplayTournaments()
 {
